@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5v7awldnr7al"]
+
+[ext_resource type="Script" uid="uid://c863ixt145t4t" path="res://Props/interactable_object.gd" id="1_8tkop"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vaefh"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yplk0"]
+points = PackedVector3Array(1, 0.5, 0.5, 1, 0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, -0.5)
+
+[node name="WideBox" type="RigidBody3D" groups=["grabbable", "interactable"]]
+collision_layer = 16
+collision_mask = 115
+mass = 150.0
+script = ExtResource("1_8tkop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vaefh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_yplk0")

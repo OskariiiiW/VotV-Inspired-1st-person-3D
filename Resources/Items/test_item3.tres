@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bmxo2ymn4by3o"]
+
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="1_67rbx"]
+[ext_resource type="PackedScene" uid="uid://pmepb3gp4ipg" path="res://Props/box.tscn" id="2_xalrv"]
+[ext_resource type="Script" uid="uid://dfxwwdko2cayf" path="res://Resources/item_data.gd" id="3_1uapg"]
+
+[resource]
+script = ExtResource("3_1uapg")
+name = "Testooo3"
+type = 2
+description = "Ime parsaa"
+is_stackable = true
+weight = 3.0
+icon = ExtResource("1_67rbx")
+scene = ExtResource("2_xalrv")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy56ytqj033rh"]
+
+[ext_resource type="Texture2D" uid="uid://bnbbt0bpw3t3o" path="res://FX_CloudAlpha04.png" id="1_4rphk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esoy3"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_4rphk")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ej3e"]
+material = SubResource("StandardMaterial3D_esoy3")
+size = Vector2(30, 30)
+
+[node name="Cloud" type="CPUParticles3D"]
+amount = 50
+lifetime = 600.0
+explosiveness = 0.98
+fixed_fps = 24
+mesh = SubResource("QuadMesh_1ej3e")
+emission_shape = 3
+emission_box_extents = Vector3(30, 12, 24)
+gravity = Vector3(0, 0, 0)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://pmepb3gp4ipg"]
+
+[ext_resource type="Script" uid="uid://c863ixt145t4t" path="res://Props/interactable_object.gd" id="1_pooyy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgbai"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_noeqf"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Box" type="RigidBody3D" groups=["grabbable", "interactable"]]
+collision_layer = 16
+collision_mask = 115
+mass = 100.0
+script = ExtResource("1_pooyy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wgbai")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_noeqf")

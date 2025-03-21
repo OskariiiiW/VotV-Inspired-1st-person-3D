@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxn5aej4ojecl"]
+
+[ext_resource type="Script" uid="uid://cw805ugj8km1r" path="res://UI/notification_gui.gd" id="1_7jaeq"]
+
+[node name="NotificationGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7jaeq")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="NotificationContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2

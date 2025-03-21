@@ -1,0 +1,203 @@
+[gd_scene load_steps=34 format=3 uid="uid://dbmtbnlq6w4w3"]
+
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="1_jopca"]
+[ext_resource type="Script" uid="uid://g40l3wjcyryf" path="res://Levels/level_1.gd" id="1_vy400"]
+[ext_resource type="PackedScene" uid="uid://bwpgxy8tjs0s4" path="res://Props/Characters/player_character.tscn" id="2_i4xk3"]
+[ext_resource type="PackedScene" uid="uid://onj3q7sg0810" path="res://UI/gui.tscn" id="3_57wr1"]
+[ext_resource type="PackedScene" uid="uid://pmepb3gp4ipg" path="res://Props/box.tscn" id="3_vs78e"]
+[ext_resource type="PackedScene" uid="uid://c5v7awldnr7al" path="res://Props/widebox.tscn" id="4_q0vgb"]
+[ext_resource type="PackedScene" uid="uid://fncpua0losfw" path="res://Props/ladder.tscn" id="5_2orjs"]
+[ext_resource type="Resource" uid="uid://bcqpb8unab5mo" path="res://Resources/Items/test_item.tres" id="5_p62vf"]
+[ext_resource type="Resource" uid="uid://2scrvbta6v10" path="res://Resources/Items/test_item2.tres" id="6_rb4s0"]
+[ext_resource type="PackedScene" uid="uid://oxn5ff8emr3q" path="res://Props/chest.tscn" id="7_me75q"]
+[ext_resource type="Resource" uid="uid://bmxo2ymn4by3o" path="res://Resources/Items/test_item3.tres" id="7_vwtf5"]
+[ext_resource type="PackedScene" uid="uid://caem010y6fvm5" path="res://Props/arm_chair.tscn" id="11_u3esp"]
+[ext_resource type="PackedScene" uid="uid://skhxmslnfhr2" path="res://screen_test.tscn" id="12_pdma0"]
+[ext_resource type="PackedScene" uid="uid://v242qwjvryno" path="res://Props/wood_pallet.tscn" id="13_1jijn"]
+[ext_resource type="PackedScene" uid="uid://dh472ftv0gd1e" path="res://Props/Foliage/common_tree_1.tscn" id="14_20gr8"]
+[ext_resource type="PackedScene" uid="uid://ckatcrlplgngu" path="res://Props/Items/book_single.tscn" id="15_ts5l0"]
+[ext_resource type="PackedScene" uid="uid://otqpilelyi77" path="res://Props/magic_circle.tscn" id="16_u2cfn"]
+[ext_resource type="Shader" uid="uid://diuj1gm0x0ogy" path="res://clouds.gdshader" id="18_vy400"]
+[ext_resource type="Texture2D" uid="uid://bpvu7p3obcsbx" path="res://weather.bmp" id="19_8n8es"]
+[ext_resource type="Script" uid="uid://cp6btnelv5ebo" path="res://Levels/cloud_container.gd" id="19_eaymk"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://perlworlnoise.tga" id="19_esoy3"]
+[ext_resource type="PackedScene" uid="uid://dy56ytqj033rh" path="res://cloud.tscn" id="19_sqs0x"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://worlnoise.bmp" id="21_1ej3e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qav6g"]
+albedo_texture = ExtResource("1_jopca")
+uv1_scale = Vector3(5, 5, 5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uyvm1"]
+material = SubResource("StandardMaterial3D_qav6g")
+size = Vector2(100, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4plph"]
+points = PackedVector3Array(-50, 0, -50, -50, 0, 50, 50, 0, -50, 50, 0, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ann45"]
+size = Vector3(1, 5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u2cfn"]
+points = PackedVector3Array(-0.5, -2.5, -0.5, -0.5, -2.5, 0.5, -0.5, 2.5, -0.5, 0.5, -2.5, -0.5, 0.5, -2.5, 0.5, -0.5, 2.5, 0.5, 0.5, 2.5, -0.5, 0.5, 2.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lr1ra"]
+points = PackedVector3Array(-0.5, -2.5, -0.5, -0.5, -2.5, 0.5, -0.5, 2.5, -0.5, 0.5, -2.5, -0.5, 0.5, -2.5, 0.5, -0.5, 2.5, 0.5, 0.5, 2.5, -0.5, 0.5, 2.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eaymk"]
+shader = ExtResource("18_vy400")
+shader_parameter/worlnoise = ExtResource("21_1ej3e")
+shader_parameter/perlworlnoise = ExtResource("19_esoy3")
+shader_parameter/weathermap = ExtResource("19_8n8es")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 1.0
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.154
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
+shader_parameter/turbidity = 10.0
+shader_parameter/sun_disk_scale = 3.0
+shader_parameter/ground_color = Color(1, 1, 1, 1)
+shader_parameter/exposure = 0.1
+
+[sub_resource type="Sky" id="Sky_8n8es"]
+sky_material = SubResource("ShaderMaterial_eaymk")
+
+[sub_resource type="Environment" id="Environment_u5uwu"]
+background_mode = 2
+sky = SubResource("Sky_8n8es")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsckx"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_vy400")
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+transform = Transform3D(18.1891, 0, 0, 0, 18.1891, 0, 0, 0, 18.1891, 0, 0, 0)
+collision_mask = 51
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain"]
+mesh = SubResource("PlaneMesh_uyvm1")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain"]
+shape = SubResource("ConvexPolygonShape3D_4plph")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Player" parent="Objects" node_paths=PackedStringArray("GUI") instance=ExtResource("2_i4xk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02102, 0)
+GUI = NodePath("GUI")
+
+[node name="GUI" parent="Objects/Player" node_paths=PackedStringArray("player") instance=ExtResource("3_57wr1")]
+player = NodePath("..")
+
+[node name="Box" parent="Objects" instance=ExtResource("3_vs78e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66908, 0.958486, -8.33023)
+item_data = ExtResource("5_p62vf")
+
+[node name="Box2" parent="Objects" instance=ExtResource("3_vs78e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22679, 0.59487, -8.39405)
+item_data = ExtResource("6_rb4s0")
+
+[node name="Box3" parent="Objects" instance=ExtResource("3_vs78e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28345, 0.580109, -8.39405)
+item_data = ExtResource("7_vwtf5")
+
+[node name="Box4" parent="Objects" instance=ExtResource("3_vs78e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97413, 2.37394, -8.39405)
+
+[node name="Box5" parent="Objects" instance=ExtResource("3_vs78e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97413, 3.92281, -8.39405)
+
+[node name="WideBox" parent="Objects" instance=ExtResource("4_q0vgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08365, 1.68303, -8.36067)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Objects"]
+transform = Transform3D(0.771891, -0.635755, 0, 0.635755, 0.771891, 0, 0, 0, 1, -4.52979, 0.581526, -2.46916)
+collision_mask = 7
+mass = 75.0
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/RigidBody3D"]
+transform = Transform3D(0.952124, -0.305712, 0, 0.305712, 0.952124, 0, 0, 0, 1, 0.163554, 0.198577, 0)
+mesh = SubResource("BoxMesh_ann45")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/RigidBody3D"]
+transform = Transform3D(0.952124, -0.305712, 0, 0.305712, 0.952124, 0, 0, 0, 1, 0.163554, 0.198577, 0)
+shape = SubResource("ConvexPolygonShape3D_u2cfn")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="Objects"]
+transform = Transform3D(0.00138936, 0.0276076, -0.999618, -0.998736, 0.0502617, 0, 0.0502425, 0.998354, 0.0276425, -3.1743, 4.39186, -10.5007)
+collision_mask = 7
+mass = 75.0
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/RigidBody3D2"]
+mesh = SubResource("BoxMesh_ann45")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/RigidBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_lr1ra")
+
+[node name="Ladder" parent="Objects" instance=ExtResource("5_2orjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08489, 2.57702, -7.88937)
+
+[node name="Chest" parent="Objects" instance=ExtResource("7_me75q")]
+transform = Transform3D(-0.0130722, 0, -0.999915, 0, 1, 0, 0.999915, 0, -0.0130722, 6.18112, 0.723785, 0)
+
+[node name="Chair" parent="Objects" instance=ExtResource("11_u3esp")]
+transform = Transform3D(-0.668884, 0, -0.743367, 0, 1, 0, 0.743367, 0, -0.668884, 4.54323, 0.444724, -4.57047)
+
+[node name="ScreenTest" parent="Objects" instance=ExtResource("12_pdma0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45955, 1.02435, -8.00016)
+
+[node name="WoodPallet" parent="Objects" instance=ExtResource("13_1jijn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51383, 0.639379, -3.80314)
+
+[node name="WoodPallet2" parent="Objects" instance=ExtResource("13_1jijn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34664, 0.461626, -3.80314)
+
+[node name="WoodPallet3" parent="Objects" instance=ExtResource("13_1jijn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13584, 0.289628, -3.80314)
+
+[node name="WoodPallet4" parent="Objects" instance=ExtResource("13_1jijn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95301, 0.129396, -3.80314)
+
+[node name="CommonTree1" parent="Objects" instance=ExtResource("14_20gr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85456, 0, -5.40016)
+
+[node name="BookSingle" parent="Objects" instance=ExtResource("15_ts5l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66144, 1.17432, -3.87257)
+
+[node name="BookSingle2" parent="Objects" instance=ExtResource("15_ts5l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.772099, 0.387491, -3.87257)
+
+[node name="BookSingle3" parent="Objects" instance=ExtResource("15_ts5l0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34475, 1.17432, -3.87257)
+
+[node name="MagicCircle" parent="Objects" instance=ExtResource("16_u2cfn")]
+transform = Transform3D(-0.999692, 0, -0.0247986, 0, 1, 0, 0.0247986, 0, -0.999692, 0, 0.837727, 12.4393)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u5uwu")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0383878, 0.999263, 0, -0.999263, 0.0383878, 0, 0, 0)
+
+[node name="Clouds" type="Node3D" parent="."]
+
+[node name="CloudContainer" type="CSGBox3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0)
+material_override = SubResource("StandardMaterial3D_xsckx")
+size = Vector3(300, 50, 300)
+script = ExtResource("19_eaymk")
+clouds_to_spawn = 0
+_cloud = ExtResource("19_sqs0x")

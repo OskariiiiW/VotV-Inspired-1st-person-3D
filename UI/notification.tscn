@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtsxdi3p3mhyp"]
+
+[ext_resource type="Script" uid="uid://cnmhej05trs5i" path="res://UI/notification.gd" id="1_dj3cc"]
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="2_2385i"]
+
+[node name="Notification" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+script = ExtResource("1_dj3cc")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Margin/HBox"]
+layout_mode = 2
+texture = ExtResource("2_2385i")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Margin/HBox"]
+layout_mode = 2
+text = "no_text"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

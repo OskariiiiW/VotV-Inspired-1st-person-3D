@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://onj3q7sg0810"]
+
+[ext_resource type="Script" uid="uid://ci8mrv6bjs7xn" path="res://UI/gui.gd" id="1_pxxg2"]
+[ext_resource type="PackedScene" uid="uid://lecnxpy2hrb7" path="res://UI/inventory_gui.tscn" id="2_cg3qc"]
+[ext_resource type="Resource" uid="uid://o62m5xlr1541" path="res://Resources/Inventories/player_inventory.tres" id="3_w2xlm"]
+[ext_resource type="PackedScene" uid="uid://bxn5aej4ojecl" path="res://UI/notification_gui.tscn" id="4_yrla7"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_pxxg2")
+
+[node name="FPS" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "NaN"
+
+[node name="InventoryGUI" parent="." instance=ExtResource("2_cg3qc")]
+visible = false
+player_inventory = ExtResource("3_w2xlm")
+
+[node name="NotificationGUI" parent="." instance=ExtResource("4_yrla7")]
+
+[connection signal="notification_signal" from="InventoryGUI" to="." method="_on_inventory_gui_notification_signal"]

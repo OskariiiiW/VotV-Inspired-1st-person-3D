@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://y3hcya3rsrc0"]
+
+[ext_resource type="Script" uid="uid://dw6ueexskxclc" path="res://UI/inventory_action.gd" id="1_rtgji"]
+
+[node name="InventoryAction" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(75, 25)
+script = ExtResource("1_rtgji")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Keybind" type="Label" parent="HBox"]
+layout_mode = 2
+text = "[?]"
+
+[node name="Action" type="Label" parent="HBox"]
+layout_mode = 2
+text = "action"

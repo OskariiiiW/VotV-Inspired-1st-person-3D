@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://skhxmslnfhr2"]
+
+[ext_resource type="Script" uid="uid://bnvqfo82cskls" path="res://screen_test.gd" id="1_t8vrh"]
+[ext_resource type="PackedScene" uid="uid://difb3gfpcltq2" path="res://keypad_ui_test.tscn" id="1_tkydj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_t8vrh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t8vrh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhtes"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_t8vrh")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lhtes"]
+points = PackedVector3Array(0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0)
+
+[node name="ScreenTest" type="Node3D" groups=["interactable"]]
+script = ExtResource("1_t8vrh")
+
+[node name="SubViewport" type="SubViewport" parent="." groups=["interactable"]]
+
+[node name="KeypadUI" parent="SubViewport" instance=ExtResource("1_tkydj")]
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_t8vrh")
+surface_material_override/0 = SubResource("StandardMaterial3D_lhtes")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_lhtes")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67023, 0.0142467)
+billboard = 2
+text = "Computaa screen"
+
+[connection signal="handle_result" from="SubViewport/KeypadUI" to="." method="_on_keypad_ui_handle_result"]
+[connection signal="mouse_entered" from="Quad/Area3D" to="." method="_on_area_3d_mouse_entered"]

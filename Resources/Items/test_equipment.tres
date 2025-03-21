@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=6 format=3 uid="uid://v2p6c7ecgqt0"]
+
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="1_76xf6"]
+[ext_resource type="Script" uid="uid://ktynwe5fs455" path="res://Resources/equipment_item_data.gd" id="1_iahw1"]
+[ext_resource type="Script" uid="uid://vlqfg4nhnfw3" path="res://Resources/buff_effect.gd" id="2_0hmoa"]
+[ext_resource type="PackedScene" uid="uid://pmepb3gp4ipg" path="res://Props/box.tscn" id="3_ucifx"]
+
+[sub_resource type="Resource" id="Resource_ucifx"]
+script = ExtResource("2_0hmoa")
+element_type = 1
+stat_type = 3
+effect_type = 1
+value_type = 0
+value = 50.0
+duration = 0.0
+can_stack = true
+metadata/_custom_type_script = "uid://vlqfg4nhnfw3"
+
+[resource]
+script = ExtResource("1_iahw1")
+equipment_type = 1
+item_effects = Array[ExtResource("2_0hmoa")]([SubResource("Resource_ucifx")])
+name = "test equipment"
+type = 1
+description = "test chest"
+is_stackable = false
+weight = 20.0
+value = 69
+icon = ExtResource("1_76xf6")
+scene = ExtResource("3_ucifx")
+metadata/_custom_type_script = "uid://ktynwe5fs455"

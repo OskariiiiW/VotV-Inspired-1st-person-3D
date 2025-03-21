@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dtr43i1yk6iok"]
+
+[ext_resource type="Script" uid="uid://dfxwwdko2cayf" path="res://Resources/item_data.gd" id="1_ucnsy"]
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="1_yw0dk"]
+
+[resource]
+script = ExtResource("1_ucnsy")
+name = "test book"
+type = 3
+description = "no cap, this is traigth up bussin"
+is_stackable = false
+weight = 0.3
+value = 169
+icon = ExtResource("1_yw0dk")
+metadata/_custom_type_script = "uid://dfxwwdko2cayf"

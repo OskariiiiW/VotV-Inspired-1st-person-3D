@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://otqpilelyi77"]
+
+[ext_resource type="Script" uid="uid://bhuoq11mnr1g1" path="res://Props/magic_circle.gd" id="1_srtmw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s6ib4"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkv0l"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eb2nm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn1yk"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="MagicCircle" type="StaticBody3D" groups=["interactable"]]
+collision_layer = 16
+collision_mask = 114
+script = ExtResource("1_srtmw")
+
+[node name="ActivationMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.30451)
+mesh = SubResource("BoxMesh_s6ib4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.30451)
+shape = SubResource("BoxShape3D_rkv0l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91231, -0.80506, 0)
+mesh = SubResource("PlaneMesh_eb2nm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99979, -0.80506, -2.98998)
+mesh = SubResource("PlaneMesh_eb2nm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01921, -0.80506, -2.95115)
+mesh = SubResource("PlaneMesh_eb2nm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98998, -0.80506, 0.0194151)
+mesh = SubResource("PlaneMesh_eb2nm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0388279, -0.80506, 3.02881)
+mesh = SubResource("PlaneMesh_eb2nm")
+
+[node name="Slot1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00982571, 0, 3.00939)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slot1"]
+shape = SubResource("BoxShape3D_bn1yk")
+
+[node name="Slot2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9998, 0, -9.53674e-07)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slot2"]
+shape = SubResource("BoxShape3D_bn1yk")
+
+[node name="Slot3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00961, 0, -3.00939)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slot3"]
+shape = SubResource("BoxShape3D_bn1yk")
+
+[node name="Slot4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0288, 0, -3.00939)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slot4"]
+shape = SubResource("BoxShape3D_bn1yk")
+
+[node name="Slot5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99957, 0, -1.43051e-06)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slot5"]
+shape = SubResource("BoxShape3D_bn1yk")
+
+[connection signal="body_entered" from="Slot1" to="." method="_on_slot_1_body_entered"]
+[connection signal="body_exited" from="Slot1" to="." method="_on_slot_1_body_exited"]
+[connection signal="body_entered" from="Slot2" to="." method="_on_slot_2_body_entered"]
+[connection signal="body_exited" from="Slot2" to="." method="_on_slot_2_body_exited"]

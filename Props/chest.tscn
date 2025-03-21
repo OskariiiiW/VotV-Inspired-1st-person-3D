@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://oxn5ff8emr3q"]
+
+[ext_resource type="Script" uid="uid://byk4amw6gi0os" path="res://Props/object_with_inv.gd" id="1_11qyl"]
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="2_3c7hi"]
+[ext_resource type="Resource" uid="uid://bcjiewbxl0m4o" path="res://Resources/Inventories/test_inventory.tres" id="2_lspo5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hwy7"]
+albedo_texture = ExtResource("2_3c7hi")
+uv1_scale = Vector3(-4.51, -4.51, -4.51)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r64gv"]
+material = SubResource("StandardMaterial3D_4hwy7")
+size = Vector3(1.5, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qocp7"]
+points = PackedVector3Array(0.75, 0.5, 0.5, 0.75, 0.5, -0.5, -0.75, 0.5, 0.5, 0.75, -0.5, 0.5, 0.75, -0.5, -0.5, -0.75, 0.5, -0.5, -0.75, -0.5, 0.5, -0.75, -0.5, -0.5)
+
+[node name="Chest" type="RigidBody3D" groups=["grabbable", "interactable"]]
+collision_layer = 16
+collision_mask = 115
+script = ExtResource("1_11qyl")
+inventory = ExtResource("2_lspo5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_r64gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_qocp7")

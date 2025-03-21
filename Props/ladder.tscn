@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://fncpua0losfw"]
+
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="1_lkq8y"]
+[ext_resource type="Script" uid="uid://b1kcs4661ge14" path="res://Props/climb_area.gd" id="2_koaxb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m66m5"]
+albedo_texture = ExtResource("1_lkq8y")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2afi4"]
+material = SubResource("StandardMaterial3D_m66m5")
+size = Vector2(0.5, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmpbu"]
+points = PackedVector3Array(0.25, 0, 2.5, -0.25, 0, 2.5, 0.25, 0, -2.5, -0.25, 0, -2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vey2p"]
+size = Vector3(0.370728, 4.84369, 0.0519638)
+
+[node name="Ladder" type="StaticBody3D"]
+collision_mask = 114
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_2afi4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fmpbu")
+
+[node name="ClimbArea" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0428894)
+script = ExtResource("2_koaxb")
+
+[node name="ClimbAreaTop" type="Area3D" parent="ClimbArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434232, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClimbArea/ClimbAreaTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.398955, 0)
+shape = SubResource("BoxShape3D_vey2p")
+
+[connection signal="body_entered" from="ClimbArea/ClimbAreaTop" to="ClimbArea" method="_on_climb_area_top_body_entered"]
+[connection signal="body_exited" from="ClimbArea/ClimbAreaTop" to="ClimbArea" method="_on_climb_area_top_body_exited"]

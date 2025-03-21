@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsav856004egy"]
+
+[ext_resource type="Script" uid="uid://65j50exdb7cn" path="res://UI/equipment_slot.gd" id="1_81y8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lr25s"]
+bg_color = Color(1, 0.441892, 0.141798, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.443137, 0.141176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="equipment_slot" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(75, 75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_81y8y")
+
+[node name="SelectBorder" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lr25s")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="PanelC" type="PanelContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Margin/PanelC"]
+layout_mode = 2
+expand_mode = 1

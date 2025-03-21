@@ -1,0 +1,215 @@
+[gd_scene load_steps=6 format=3 uid="uid://lecnxpy2hrb7"]
+
+[ext_resource type="Script" uid="uid://cb7dl4gnjqfp8" path="res://UI/inventory_gui.gd" id="1_jj8fj"]
+[ext_resource type="Texture2D" uid="uid://db6xorxb7d255" path="res://icon.svg" id="2_e4yon"]
+[ext_resource type="PackedScene" uid="uid://bsav856004egy" path="res://UI/equipment_slot.tscn" id="3_7b0oc"]
+[ext_resource type="PackedScene" uid="uid://c4orfjow1bvl5" path="res://UI/stack_prompt.tscn" id="3_45xxn"]
+[ext_resource type="PackedScene" uid="uid://dyepav72vucif" path="res://UI/equipment_tooltip.tscn" id="5_ujf7f"]
+
+[node name="InventoryGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jj8fj")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TabBar" type="TabBar" parent="VBox"]
+layout_mode = 2
+focus_mode = 0
+current_tab = 0
+tab_count = 3
+tab_0/title = "Inventory"
+tab_1/title = "Equipment"
+tab_2/title = "Stats"
+
+[node name="PanelC" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="VBox/PanelC"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Inventory" type="HBoxContainer" parent="VBox/PanelC/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ExtInvC" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="ExtItemCName" type="Label" parent="VBox/PanelC/Margin/Inventory/ExtInvC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "container_name"
+
+[node name="Scroll" type="ScrollContainer" parent="VBox/PanelC/Margin/Inventory/ExtInvC"]
+custom_minimum_size = Vector2(150, 225)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+
+[node name="ExtInv" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory/ExtInvC/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExtCurrentWeight" type="Label" parent="VBox/PanelC/Margin/Inventory/ExtInvC"]
+layout_mode = 2
+text = "0/0"
+
+[node name="InvC" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox/PanelC/Margin/Inventory/InvC"]
+layout_mode = 2
+
+[node name="PanelC" type="PanelContainer" parent="VBox/PanelC/Margin/Inventory/InvC/HBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="name" type="Label" parent="VBox/PanelC/Margin/Inventory/InvC/HBox/PanelC"]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="PanelC2" type="PanelContainer" parent="VBox/PanelC/Margin/Inventory/InvC/HBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="stack" type="Label" parent="VBox/PanelC/Margin/Inventory/InvC/HBox/PanelC2"]
+layout_mode = 2
+text = "Stack"
+horizontal_alignment = 1
+
+[node name="PanelC3" type="PanelContainer" parent="VBox/PanelC/Margin/Inventory/InvC/HBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="weight" type="Label" parent="VBox/PanelC/Margin/Inventory/InvC/HBox/PanelC3"]
+layout_mode = 2
+text = "Weigth"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="VBox/PanelC/Margin/Inventory/InvC"]
+custom_minimum_size = Vector2(150, 225)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+
+[node name="Inv" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory/InvC/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentWeight" type="Label" parent="VBox/PanelC/Margin/Inventory/InvC"]
+layout_mode = 2
+text = "0/0"
+horizontal_alignment = 2
+
+[node name="ItemInfo" type="PanelContainer" parent="VBox/PanelC/Margin/Inventory"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="VBox" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory/ItemInfo"]
+layout_mode = 2
+
+[node name="ItemImage" type="TextureRect" parent="VBox/PanelC/Margin/Inventory/ItemInfo/VBox"]
+layout_mode = 2
+texture = ExtResource("2_e4yon")
+
+[node name="Description" type="Label" parent="VBox/PanelC/Margin/Inventory/ItemInfo/VBox"]
+layout_mode = 2
+text = "description"
+
+[node name="ActionContainer" type="VBoxContainer" parent="VBox/PanelC/Margin/Inventory/ItemInfo/VBox"]
+layout_mode = 2
+
+[node name="Equipment" type="Control" parent="VBox/PanelC/Margin"]
+visible = false
+layout_mode = 2
+
+[node name="Hbox" type="HBoxContainer" parent="VBox/PanelC/Margin/Equipment"]
+layout_mode = 2
+offset_right = 440.0
+offset_bottom = 290.0
+alignment = 1
+
+[node name="Hands" parent="VBox/PanelC/Margin/Equipment/Hbox" instance=ExtResource("3_7b0oc")]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="VBox/PanelC/Margin/Equipment/Hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Head" parent="VBox/PanelC/Margin/Equipment/Hbox/VBox" instance=ExtResource("3_7b0oc")]
+layout_mode = 2
+
+[node name="Chest" parent="VBox/PanelC/Margin/Equipment/Hbox/VBox" instance=ExtResource("3_7b0oc")]
+layout_mode = 2
+
+[node name="Feet" parent="VBox/PanelC/Margin/Equipment/Hbox/VBox" instance=ExtResource("3_7b0oc")]
+layout_mode = 2
+
+[node name="Jewelry" parent="VBox/PanelC/Margin/Equipment/Hbox" instance=ExtResource("3_7b0oc")]
+layout_mode = 2
+
+[node name="StatContainer" type="Control" parent="VBox/PanelC/Margin/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBox/PanelC/Margin/Equipment/StatContainer"]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 23.0
+text = "rizz : 9001"
+
+[node name="StackPrompt" parent="." instance=ExtResource("3_45xxn")]
+visible = false
+layout_mode = 1
+offset_left = -100.0
+offset_top = -57.5
+offset_right = 100.0
+offset_bottom = 57.5
+
+[node name="EquipmentTooltip" parent="." instance=ExtResource("5_ujf7f")]
+visible = false
+layout_mode = 0
+offset_left = 703.0
+offset_top = 190.0
+offset_right = 903.0
+offset_bottom = 337.0
+
+[connection signal="tab_selected" from="VBox/TabBar" to="." method="_on_tab_bar_tab_selected"]
+[connection signal="amount_selected" from="StackPrompt" to="." method="_on_stack_prompt_amount_selected"]
+[connection signal="cancel_pressed" from="StackPrompt" to="." method="_on_stack_prompt_cancel_pressed"]
